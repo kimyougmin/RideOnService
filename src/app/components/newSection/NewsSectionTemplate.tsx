@@ -1,4 +1,15 @@
-function NewsSection() {
+import {NewsType} from "@/types/newsType";
+import SafeHtml from "@/utils/SafeHtml";
+import GetTimeAgo from "@/utils/GetTimeAgo";
+
+
+interface NewsSectionProps {
+  latest: NewsType[];
+  popular: NewsType[];
+}
+
+function NewsSectionTemplate({latest, popular}: NewsSectionProps) {
+
   return (
     <div>
       <div className="">
@@ -8,15 +19,6 @@ function NewsSection() {
             <h2 className="text-4xl font-bold dark:text-black1 leading-tight">
               최신 자전거 뉴스 & 트렌드를 한눈에!
             </h2>
-          </div>
-
-          {/* 로딩 */}
-          {/*<div className="flex justify-center items-center h-40">*/}
-          {/*  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>*/}
-          {/*</div>*/}
-
-          <div className="text-center text-red-500 py-8">
-
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -41,27 +43,32 @@ function NewsSection() {
                 >최신</span
                 >
               </h3>
-              <ul className="flex flex-col gap-4 list-none p-0">
-                <h4 className="font-medium flex items-start">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 mr-2 mt-1 flex-shrink-0 text-primaryRed"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <span>item.title</span>
-                </h4>
-                <p className="text-body1 text-gray-600 dark:text-gray-400 truncate m-0 mb-2 mt-1 ml-6">
-                  item.description
-                </p>
-                <div className="text-body2 text-gray-500 mt-1 ml-6">formatDate(item.pubDate)</div>
-              </ul>
+              {latest.map((item, idx) => {
+                return (
+                  <ul key={idx} className="flex flex-col gap-4 list-none p-0 mb-8">
+                    <h4 className="font-medium flex items-start">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 mr-2 mt-1 flex-shrink-0 text-primaryRed"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span><SafeHtml html={item.title} style={"text-20 text-black1"}/></span>
+                    </h4>
+                    <p className="text-body1 text-gray-600 dark:text-gray-400 truncate m-0 mt-1 ml-6">
+                      <SafeHtml html={item.description} style={"text-body1 text-gray-600 dark:text-gray-400"}/>
+                    </p>
+                    <div className="text-body2 text-gray-500 mt-1 ml-6">{GetTimeAgo(item.pubDate)}</div>
+                  </ul>
+                )
+              })}
+
             </div>
 
             <div className="bg-white dark:bg-black8 drop-shadow-custom2 p-6 border-t-4 border-blue-500">
@@ -122,26 +129,31 @@ function NewsSection() {
                 >인기</span
                 >
               </h3>
-              <ul className="flex flex-col gap-4 list-none p-0">
-                <h4 className="font-medium flex items-start">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 mr-2 mt-1 flex-shrink-0 text-blue-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-                    />
-                  </svg>
-
-                  <span>item.title</span>
-                </h4>
-                <p className="text-body1 text-gray-600 dark:text-gray-400 truncate m-0 mb-2 mt-1 ml-6">
-                  item.description
-                </p>
-                <div className="text-body2 text-gray-500 mt-1 ml-6">item.bloggername</div>
-              </ul>
+              {popular.map((item, idx) => {
+                return (
+                  <ul key={idx} className="flex flex-col gap-4 list-none p-0 mb-8">
+                    <h4 className="font-medium flex items-start">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 mr-2 mt-1 flex-shrink-0 text-primaryRed"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span><SafeHtml html={item.title} style={"text-20 text-black1"}/></span>
+                    </h4>
+                    <p className="text-body1 text-gray-600 dark:text-gray-400 truncate m-0 mt-1 ml-6">
+                      <SafeHtml html={item.description} style={"text-body1 text-gray-600 dark:text-gray-400"}/>
+                    </p>
+                    <div className="text-body2 text-gray-500 mt-1 ml-6">{GetTimeAgo(item.pubDate)}</div>
+                  </ul>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -150,4 +162,4 @@ function NewsSection() {
   );
 }
 
-export default NewsSection;
+export default NewsSectionTemplate;

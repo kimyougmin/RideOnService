@@ -1,4 +1,4 @@
-import NewsSection from "@/app/components/NewsSection";
+import NewsSection from "@/app/components/newSection/NewsSection";
 import BasicFooter from "@/app/components/BasicFooter";
 import BasicHeader from "@/app/components/BasicHeader";
 import BicycleSection from "@/app/components/BicycleSection";
