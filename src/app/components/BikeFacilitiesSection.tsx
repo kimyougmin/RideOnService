@@ -12,7 +12,7 @@ function BikeFacilitiesSection() {
   return (
     <div>
       <article className="flex flex-col gap-[50px]">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-12">
           <h3 className="text-3xl text-primaryRed font-bold">Bike Facilities</h3>
           <h2 className="text-4xl font-bold dark:text-black1">
             언제 어디서나 안심 라이딩! 편의시설 한눈에

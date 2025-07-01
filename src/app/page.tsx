@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="w-full block h-full dark:bg-black9">
+      <div className="w-full block h-full dark:bg-black10">
         <BasicHeader/>
         <section>
           <MainBanner/>
