@@ -26,10 +26,10 @@ export default function Header() {
   };
 
   return (
-    <header className="max-w-[1440px] px-[94px] py-[30px] mx-auto bg-black1 dark:bg-black9 pb-4 flex flex-col gap-4">
+    <header className="w-full px-[94px] py-[30px] mx-auto bg-black1 dark:bg-black9 pb-4 flex flex-col gap-4">
       <div className="flex justify-between items-center w-full">
         {/* Logo */}
-        <Link href="/">
+        <Link href="/public">
           <svg width="126" height="25" viewBox="0 0 126 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             {/* Insert your SVG path here */}
             <path
