@@ -1,4 +1,4 @@
-import NewsSection from "@/components/newSection/NewsSection";
+import NewsSection from "@/components/main/newSection/NewsSection";
 import BicycleSection from "@/components/main/BicycleSection";
 import BikeFacilitiesSection from "@/components/main/BikeFacilitiesSection";
 import BikeRoutesSection from "@/components/main/BikeRoutesSection";
