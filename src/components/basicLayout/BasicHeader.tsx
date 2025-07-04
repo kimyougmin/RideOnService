@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   useEffect(() => {
     const theme = localStorage.getItem('theme');
@@ -26,10 +26,10 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full px-[94px] py-[30px] mx-auto bg-black1 dark:bg-black9 pb-4 flex flex-col gap-4">
+    <header className="w-full px-8 sm:px-40 lg:px-94 py-6 sm:py-30 mx-auto bg-black1 dark:bg-black9 pb-4 flex flex-col gap-4">
       <div className="flex justify-between items-center w-full">
         {/* Logo */}
-        <Link href="/public">
+        <Link href="/">
           <svg width="126" height="25" viewBox="0 0 126 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             {/* Insert your SVG path here */}
             <path
@@ -40,7 +40,7 @@ export default function Header() {
         </Link>
 
         {/* Icons */}
-        <div className="flex max-w-[140px] gap-10 justify-between">
+        <div className="flex gap-4 sm:gap-6 md:gap-8 items-center">
           {/* Search Icon */}
           <svg
             width="22"
@@ -105,17 +105,15 @@ export default function Header() {
       </div>
 
       {/* Navigation Links */}
-      <nav className="flex gap-20 py-16">
+      <nav className="flex sm:flex-row gap-18 md:gap-24 lg:gap-20 py-6 sm:py-10">
         {[
-          {label: '자전거', href: '/bicycle'},
-          {label: '라이더 용품', href: '/riderParts'},
           {label: '자전거 도로', href: '/roadMap'},
           {label: '라이더 크루', href: '/riderCrewBoard'},
           {label: '자유게시판', href: '/freeBoard'},
           {label: 'Q & A', href: '/qnaBoard'},
         ].map(({label, href}) => (
           <Link href={href} key={href}>
-            <p className="font-bold text-[16px] dark:text-black1">{label}</p>
+            <p className="font-bold text-base sm:text-[16px] dark:text-black1">{label}</p>
           </Link>
         ))}
       </nav>

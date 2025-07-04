@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { NewsType } from "@/types/newsType";
 import { APIBuilder } from "@/utils/APIBuilder";
-import NewsSectionTemplate from "@/components/newSection/NewsSectionTemplate";
+import NewsSectionTemplate from "@/components/main/newSection/NewsSectionTemplate";
 
 export const metadata: Metadata = {
   title: "자전거 뉴스",
@@ -9,15 +9,23 @@ export const metadata: Metadata = {
 };
 
 async function getNewsData(): Promise<{ latest: NewsType[]; popular: NewsType[] }> {
-  const [latestRes, popularRes] = await Promise.all([
-    APIBuilder.get("/api/news/latest").build().call<any>(),
-    APIBuilder.get("/api/news/popular").build().call<any>(),
-  ]);
+  try {
+    const [latestRes, popularRes] = await Promise.all([
+      APIBuilder.get("/api/news/latest").build().call<NewsType[]>(),
+      APIBuilder.get("/api/news/popular").build().call<NewsType[]>(),
+    ]);
 
-  return {
-    latest: latestRes.data,
-    popular: popularRes.data,
-  };
+    return {
+      latest: latestRes.data,
+      popular: popularRes.data,
+    };
+  } catch (e) {
+    console.error("Failed to fetch news data:", e);
+    return {
+      latest: [],
+      popular: [],
+    };
+  }
 }
 
 export default async function NewsSection() {

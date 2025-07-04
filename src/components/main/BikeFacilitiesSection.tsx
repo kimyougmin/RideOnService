@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 
 const facilities = [
   { href: '/roadMap', src: '/main/main_bike_facility_1.png', title: '공공자전거' },
@@ -11,10 +12,10 @@ const facilities = [
 function BikeFacilitiesSection() {
   return (
     <div>
-      <article className="flex flex-col gap-[50px]">
-        <div className="flex flex-col gap-12">
-          <h3 className="text-3xl text-primaryRed font-bold">Bike Facilities</h3>
-          <h2 className="text-4xl font-bold dark:text-black1">
+      <article className="flex flex-col gap-30 lg:gap-50">
+        <div className="flex flex-col lg:gap-12 gap-4">
+          <h3 className="lg:text-3xl text-xl text-primaryRed font-bold">Bike Facilities</h3>
+          <h2 className="lg:text-4xl text-xl font-bold dark:text-black1">
             언제 어디서나 안심 라이딩! 편의시설 한눈에
           </h2>
         </div>
@@ -22,14 +23,16 @@ function BikeFacilitiesSection() {
           {facilities.map((facility, idx) => (
             <Link key={idx} href={facility.href} className="col-span-3 group">
               <div className="relative overflow-hidden rounded-lg">
-                <img
+                <Image
                   src={facility.src}
                   alt="bike facility"
                   className="mb-4 w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                  width={500}
+                  height={500}
                 />
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
               </div>
-              <h4 className="text-2xl font-semibold text-center dark:text-black1">
+              <h4 className="lg:text-2xl text-lg font-semibold text-center dark:text-black1">
                 {facility.title}
               </h4>
             </Link>

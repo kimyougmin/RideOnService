@@ -9,7 +9,7 @@ export default async function GetNewsApi({ newsType }: GetNewsRequestType): Prom
     .withCredentials(true)
     .timeout(50000)
     .build()
-    .call<any>();
+    .call<NewsType[]>();
 
   return response.data;
 }

@@ -11,7 +11,7 @@ export default function Home() {
       <section>
         <MainBanner/>
       </section>
-      <section className=" mx-auto my-[120px] px-[93px] flex flex-col gap-[120px]">
+      <section className=" mx-auto lg:my-120 lg:px-93 flex flex-col lg:gap-120 p-16 gap-20">
         <BikeRoutesSection/>
         <BikeFacilitiesSection/>
         <BicycleSection/>

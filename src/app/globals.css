@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 @import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -138,5 +141,19 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+@layer utilities {
+  @keyframes float-y {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px); /* 위로 10px 이동 */
+    }
+  }
+
+  .animate-float-y {
+    animation: float-y 2s ease-in-out infinite;
   }
 }
