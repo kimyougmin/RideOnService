@@ -10,7 +10,7 @@ export default async function LoginApi({ email, password }: LoginRequestType): P
     .withCredentials(true)
     .timeout(50000)
     .build()
-    .call<any>();
+    .call<UserType>();
 
   return response.data;
 }
