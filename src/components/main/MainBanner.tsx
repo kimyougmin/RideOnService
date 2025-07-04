@@ -3,7 +3,7 @@ import React from 'react';
 function MainBanner() {
   return (
     <div>
-      <section className="w-full h-[600px] bg-black2">
+      <section className="w-full bg-black2">
         <div className="w-full h-full relative">
           <img src="/main/main_banner_bg.png" alt="banner text" className="w-full h-full object-cover"/>
           <img

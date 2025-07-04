@@ -11,10 +11,10 @@ const facilities = [
 function BikeFacilitiesSection() {
   return (
     <div>
-      <article className="flex flex-col gap-[50px]">
-        <div className="flex flex-col gap-12">
-          <h3 className="text-3xl text-primaryRed font-bold">Bike Facilities</h3>
-          <h2 className="text-4xl font-bold dark:text-black1">
+      <article className="flex flex-col gap-30 lg:gap-50">
+        <div className="flex flex-col lg:gap-12 gap-4">
+          <h3 className="lg:text-3xl text-xl text-primaryRed font-bold">Bike Facilities</h3>
+          <h2 className="lg:text-4xl text-xl font-bold dark:text-black1">
             언제 어디서나 안심 라이딩! 편의시설 한눈에
           </h2>
         </div>
@@ -29,7 +29,7 @@ function BikeFacilitiesSection() {
                 />
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
               </div>
-              <h4 className="text-2xl font-semibold text-center dark:text-black1">
+              <h4 className="lg:text-2xl text-lg font-semibold text-center dark:text-black1">
                 {facility.title}
               </h4>
             </Link>

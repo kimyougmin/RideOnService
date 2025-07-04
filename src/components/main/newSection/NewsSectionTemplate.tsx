@@ -12,9 +12,9 @@ function NewsSectionTemplate({latest, popular}: NewsSectionProps) {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col gap-4 mb-[50px]">
-        <h3 className="text-3xl text-primaryRed font-bold">Cycling News</h3>
-        <h2 className="text-4xl font-bold dark:text-black1 leading-tight">
+      <div className="flex flex-col gap-4 lg:mb-50 mb-10">
+        <h3 className="text-xl lg:text-3xl text-primaryRed font-bold">Cycling News</h3>
+        <h2 className="text-xl lg:text-4xl font-bold dark:text-black1 leading-tight">
           최신 자전거 뉴스 & 트렌드를 한눈에!
         </h2>
       </div>
