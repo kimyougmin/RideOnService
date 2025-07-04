@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function LoginPage() {
   return (
     <div className="w-full block h-full dark:bg-black10">
-      <main className="max-w-[1440px] px-4 md:px-10 mx-auto pt-10 flex flex-col items-center gap-8 mb-120">
+      <main className="max-w-[1440px] px-4 md:px-10 mx-auto pt-10 flex flex-col items-center gap-8 lg:mb-246 xl:mb-120 md:mb-60">
         <div className="mt-20">
           <svg
             width="126"
@@ -23,9 +23,9 @@ export default function LoginPage() {
 
         <div className="flex mt-16">
           <p
-            className="w-144 sm:w-144 h-40 font-bold rounded-l-lg flex items-center justify-center cursor-pointer border transition-all bg-black9 text-black1 border-black9 dark:bg-black1 dark:text-black7 dark:border-black1">로그인</p>
+            className="w-164 h-40 font-bold rounded-l-lg flex items-center justify-center cursor-pointer border transition-all bg-black9 text-black1 border-black9 dark:bg-black1 dark:text-black7 dark:border-black1">로그인</p>
           <p
-            className="w-144 sm:w-144 h-40 font-bold rounded-r-lg flex items-center justify-center cursor-pointer border transition-all bg-black1 text-black9 border-black9 dark:bg-black9 dark:text-black1 dark:border-black1">회원가입</p>
+            className="w-164 h-40 font-bold rounded-r-lg flex items-center justify-center cursor-pointer border transition-all bg-black1 text-black9 border-black9 dark:bg-black9 dark:text-black1 dark:border-black1">회원가입</p>
         </div>
 
         <div className="flex justify-center w-full px-4 sm:px-0 mt-40 pb-52">
@@ -64,7 +64,7 @@ export default function LoginPage() {
               </div>
 
               <div className="w-full flex flex-col items-center space-y-20 mt-40 relative">
-                <div className="absolute -top-27 w-154 flex items-center justify-center animate-float-y">
+                <div className="absolute -top-34 w-194 flex items-center justify-center animate-float-y">
                   <img src="/icons/loginBox.svg" alt="빠른 회원가입" className="w-full"/>
                   <p
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[70%] text-[13px] font-bold text-primaryRed whitespace-nowrap">
@@ -96,7 +96,7 @@ export default function LoginPage() {
 
               <p className="mt-27 text-sm dark:text-black3 text-center">
                 Wherever you want, <span className="text-primaryRed font-bold">RideOn</span>
-                <Link href="/" className="underline ml-1 dark:text-blue-400 text-blue-600">홈으로 돌아가기</Link>
+                <Link href="/" className="underline ml-4 dark:text-blue-400 text-blue-600">홈으로 돌아가기</Link>
               </p>
             </div>
           </form>
