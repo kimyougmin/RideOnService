@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   useEffect(() => {
     const theme = localStorage.getItem('theme');

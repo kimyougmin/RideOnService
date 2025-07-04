@@ -1,6 +1,6 @@
 import React from 'react';
-
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LoginPage() {
   return (
@@ -65,7 +65,7 @@ export default function LoginPage() {
 
               <div className="w-full flex flex-col items-center space-y-20 mt-40 relative">
                 <div className="absolute -top-34 w-194 flex items-center justify-center animate-float-y">
-                  <img src="/icons/loginBox.svg" alt="빠른 회원가입" className="w-full"/>
+                  <Image src="/icons/loginBox.svg" alt="빠른 회원가입" width={194} height={100}/>
                   <p
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[70%] text-[13px] font-bold text-primaryRed whitespace-nowrap">
                     5초만에 빠른 회원가입
@@ -75,7 +75,7 @@ export default function LoginPage() {
                 <button type="button"
                         className="w-full h-40 bg-[#FEE500] rounded flex items-center justify-center font-bold text-lg">
                   <div className="flex items-center justify-center gap-3">
-                    <img src="/icons/kakaoLogin.svg" alt="카카오 로그인" className="w-20 h-20"/>
+                    <Image src="/icons/kakaoLogin.svg" alt="카카오 로그인" width={20} height={20}/>
                     <span>카카오로 로그인</span>
                   </div>
                 </button>
@@ -83,7 +83,7 @@ export default function LoginPage() {
                 <button type="button"
                         className="w-full h-40 bg-[#03C75A] text-black1 rounded flex items-center justify-center font-bold text-lg">
                   <div className="flex items-center justify-center gap-3">
-                    <img src="/icons/naverLogin.svg" alt="네이버 로그인" className="w-20 h-20"/>
+                    <Image src="/icons/naverLogin.svg" alt="네이버 로그인" width={20} height={20}/>
                     <span>네이버로 로그인</span>
                   </div>
                 </button>

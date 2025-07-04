@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 
 const facilities = [
   { href: '/roadMap', src: '/main/main_bike_facility_1.png', title: '공공자전거' },
@@ -22,10 +23,12 @@ function BikeFacilitiesSection() {
           {facilities.map((facility, idx) => (
             <Link key={idx} href={facility.href} className="col-span-3 group">
               <div className="relative overflow-hidden rounded-lg">
-                <img
+                <Image
                   src={facility.src}
                   alt="bike facility"
                   className="mb-4 w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                  width={500}
+                  height={500}
                 />
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
               </div>

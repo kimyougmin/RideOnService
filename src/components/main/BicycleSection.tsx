@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from "next/link";
+import Image from "next/image";
 
 function BicycleSection() {
   return (
@@ -16,10 +17,10 @@ function BicycleSection() {
         </div>
         <div className="grid grid-cols-12 lg:gap-8 gap-4">
           <Link href="bicycleSearch/1" className="col-span-6">
-            <img src="/main/main_bike_brand.png" alt="bike facility" className="mb-4"/>
+            <Image src="/main/main_bike_brand.png" alt="bike facility" className="mb-4" width={500} height={500}/>
           </Link>
           <Link href="bicycleSearch/2" className="col-span-6">
-            <img src="/main/main_bike_category.png" alt="bike facility" className="mb-4"/>
+            <Image src="/main/main_bike_category.png" alt="bike facility" className="mb-4"  width={500} height={500}/>
           </Link>
         </div>
       </article>

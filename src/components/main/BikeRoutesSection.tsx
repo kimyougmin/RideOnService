@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from "next/link";
+import Image from "next/image";
 
 function BikeRoutesSection() {
 
@@ -36,7 +37,7 @@ function BikeRoutesSection() {
           </div>
         </div>
         <div className="col-start-6 col-span-7 overflow-hidden">
-          <img src="/main/main_bike_route.png" alt="banner text" className="w-full"/>
+          <Image src="/main/main_bike_route.png" alt="banner text" className="w-full" width={500} height={500} />
         </div>
       </article>
       <div className="inline lg:hidden ">
