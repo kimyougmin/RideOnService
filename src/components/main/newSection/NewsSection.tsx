@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { NewsType } from "@/types/newsType";
 import { APIBuilder } from "@/utils/APIBuilder";
-import NewsSectionTemplate from "@/components/newSection/NewsSectionTemplate";
+import NewsSectionTemplate from "@/components/main/newSection/NewsSectionTemplate";
 
 export const metadata: Metadata = {
   title: "자전거 뉴스",

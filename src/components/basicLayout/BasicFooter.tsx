@@ -2,9 +2,9 @@ import React from 'react';
 
 function BasicFooter() {
   return (
-    <footer className="bg-black7">
-      <div className="container mx-auto px-[93px] pt-12 pb-28 flex justify-between">
-        <div>
+    <footer className="bg-black9">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-[93px] pt-12 pb-112 flex flex-row gap-12 lg:gap-24">
+        <div className="flex flex-col gap-4">
           <div className="w-64 mb-6">
             <svg
               width="126"
@@ -25,19 +25,8 @@ function BasicFooter() {
           </h2>
         </div>
         <div>
-          <h2 className="text-lg font-bold text-black1 mb-4">MEMBER</h2>
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-2 font-light text-black1 list-none pl-0">
-            <li>전성우</li>
-            <li>김영민</li>
-            <li>배채연</li>
-            <li>양윤호</li>
-            <li>박수관</li>
-          </ul>
-        </div>
-        <div>
           <h2 className="text-lg font-bold text-black1 mb-4">FEATURE</h2>
           <ul className="grid gap-y-2 font-light text-black1 list-none pl-0">
-            <li>자전거</li>
             <li>자전거 도로</li>
             <li>자전거 편의시설</li>
             <li>자전거 용품</li>
