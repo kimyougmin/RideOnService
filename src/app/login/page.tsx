@@ -1,8 +1,10 @@
+"use client"
 import React from 'react';
-import Link from "next/link";
-import Image from "next/image";
+import LoginForm from "@/components/login/LoginForm";
+import SignupForm from "@/components/login/SignupForm";
 
 export default function LoginPage() {
+  const [isStatus, setIsStatus] = React.useState<boolean>(true);
   return (
     <div className="w-full block h-full dark:bg-black10">
       <main className="max-w-[1440px] px-4 md:px-10 mx-auto pt-10 flex flex-col items-center gap-8 lg:mb-246 xl:mb-120 md:mb-60">
@@ -22,85 +24,11 @@ export default function LoginPage() {
         </div>
 
         <div className="flex mt-16">
-          <p
-            className="w-164 h-40 font-bold rounded-l-lg flex items-center justify-center cursor-pointer border transition-all bg-black9 text-black1 border-black9 dark:bg-black1 dark:text-black7 dark:border-black1">로그인</p>
-          <p
-            className="w-164 h-40 font-bold rounded-r-lg flex items-center justify-center cursor-pointer border transition-all bg-black1 text-black9 border-black9 dark:bg-black9 dark:text-black1 dark:border-black1">회원가입</p>
+          <p className={`w-164 h-40 font-bold rounded-l-lg flex items-center justify-center cursor-pointer border transition-all ${isStatus ? `bg-black9 text-black1 border-black9 dark:bg-black1 dark:text-black7 dark:border-black1`: `bg-black1 text-black9 border-black9 dark:bg-black9 dark:text-black1 dark:border-black1`}` } onClick={() => setIsStatus(true)}>로그인</p>
+          <p className={`w-164 h-40 font-bold rounded-r-lg flex items-center justify-center cursor-pointer border transition-all ${!isStatus ? `bg-black9 text-black1 border-black9 dark:bg-black1 dark:text-black9 dark:border-black1`: `bg-black1 text-black9 border-black9 dark:bg-black9 dark:text-black1 dark:border-black1`}`} onClick={() => setIsStatus(false)}>회원가입</p>
         </div>
 
-        <div className="flex justify-center w-full px-4 sm:px-0 mt-40 pb-52">
-          <form className="w-full max-w-md flex flex-col items-center">
-            <div className="w-full space-y-8">
-              <button type="submit" className="hidden"></button>
-              <div>
-                <label className="block text-sm font-medium mb-1 text-black7 dark:text-black3">이메일</label>
-                <input
-                  type="email"
-                  className="w-full mt-8 h-48 p-9 border border-black4 rounded text-base bg-transparent focus:border-primaryRed outline-none dark:border-black1 dark:placeholder:text-black1 dark:text-black1 placeholder:text-black4"
-                  placeholder="이메일을 입력하세요."
-                />
-                <p className="text-primaryRed text-sm h-5">{}</p>
-              </div>
-
-              <div className="mt-32 mb-48">
-                <label className="block text-sm font-medium mb-1 text-black7 dark:text-black3">비밀번호</label>
-                <input
-                  type="password"
-                  className="w-full mt-8 h-48 p-9 border border-black4 rounded text-base bg-transparent focus:border-primaryRed outline-none dark:border-black1 dark:placeholder:text-black1 dark:text-black1 placeholder:text-black4"
-                  placeholder="비밀번호를 입력하세요."
-                />
-                <p className="text-primaryRed text-sm h-5">{}</p>
-              </div>
-
-              <div className="flex justify-between items-center text-sm w-full -mt-4">
-                <label className="flex items-center cursor-pointer">
-                  <input type="checkbox" className="mr-2"/>
-                  <span className="cursor-pointer dark:text-black3">아이디 저장</span>
-                </label>
-                <div>
-                  <Link href="/" className="mr-8 dark:text-black3">아이디 찾기</Link>
-                  <Link href="/" className="dark:text-black3">비밀번호 찾기</Link>
-                </div>
-              </div>
-
-              <div className="w-full flex flex-col items-center space-y-20 mt-40 relative">
-                <div className="absolute -top-34 w-194 flex items-center justify-center animate-float-y">
-                  <Image src="/icons/loginBox.svg" alt="빠른 회원가입" width={194} height={100}/>
-                  <p
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[70%] text-[13px] font-bold text-primaryRed whitespace-nowrap">
-                    5초만에 빠른 회원가입
-                  </p>
-                </div>
-
-                <button type="button"
-                        className="w-full h-40 bg-[#FEE500] rounded flex items-center justify-center font-bold text-lg">
-                  <div className="flex items-center justify-center gap-3">
-                    <Image src="/icons/kakaoLogin.svg" alt="카카오 로그인" width={20} height={20}/>
-                    <span>카카오로 로그인</span>
-                  </div>
-                </button>
-
-                <button type="button"
-                        className="w-full h-40 bg-[#03C75A] text-black1 rounded flex items-center justify-center font-bold text-lg">
-                  <div className="flex items-center justify-center gap-3">
-                    <Image src="/icons/naverLogin.svg" alt="네이버 로그인" width={20} height={20}/>
-                    <span>네이버로 로그인</span>
-                  </div>
-                </button>
-              </div>
-
-              <p
-                className="w-full h-40 border rounded text-lg font-bold mt-20 transition-all focus:ring-2 focus:ring-primaryRed flex items-center justify-center cursor-pointer bg-black7 text-black1 border-black7 hover:bg-primaryRed hover:text-white dark:bg-black3 dark:text-black7 dark:border-black3 dark:hover:bg-primaryRed">
-                로그인
-              </p>
-
-              <p className="mt-27 text-sm dark:text-black3 text-center">
-                Wherever you want, <span className="text-primaryRed font-bold">RideOn</span>
-                <Link href="/" className="underline ml-4 dark:text-blue-400 text-blue-600">홈으로 돌아가기</Link>
-              </p>
-            </div>
-          </form>
-        </div>
+        {isStatus ? (<LoginForm/>) : (<SignupForm/>)}
 
       </main>
     </div>)
