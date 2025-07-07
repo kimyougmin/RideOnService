@@ -1,17 +1,47 @@
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
+import {LoginRequestType} from "@/types/LoginRequestType";
+import LoginApi from "@/apis/LoginApi";
 
 function LoginForm() {
+  const [userForm, setUserForm] = React.useState<LoginRequestType>({
+    email: "",
+    password: ""
+  })
+
+  const formDateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {value, name} = e.target;
+    setUserForm(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (userForm.email.length <= 6 && userForm.password.length <= 6) {
+      alert("조건을 확인해주세요!");
+      return
+    }
+
+    const res = await LoginApi(userForm);
+
+    if(res.token) {
+      // TODO: 전역 provider 설정 
+    }
+  };
   return (
     <div className="flex justify-center w-full px-4 sm:px-0 mt-40 pb-52">
-      <form className="w-full max-w-md flex flex-col items-center">
+      <form className="w-full max-w-md flex flex-col items-center" onSubmit={handleSubmit}>
         <div className="w-full space-y-8">
           <button type="submit" className="hidden"></button>
           <div>
             <label className="block text-sm font-medium mb-1 text-black7 dark:text-black3">이메일</label>
             <input
               type="email"
+              name="email"
+              value={userForm.email}
+              onChange={formDateHandler}
               className="w-full mt-8 h-48 p-9 border border-black4 rounded text-base bg-transparent focus:border-primaryRed outline-none dark:border-black1 dark:placeholder:text-black1 dark:text-black1 placeholder:text-black4"
               placeholder="이메일을 입력하세요."
             />
@@ -22,6 +52,9 @@ function LoginForm() {
             <label className="block text-sm font-medium mb-1 text-black7 dark:text-black3">비밀번호</label>
             <input
               type="password"
+              name="password"
+              value={userForm.password}
+              onChange={formDateHandler}
               className="w-full mt-8 h-48 p-9 border border-black4 rounded text-base bg-transparent focus:border-primaryRed outline-none dark:border-black1 dark:placeholder:text-black1 dark:text-black1 placeholder:text-black4"
               placeholder="비밀번호를 입력하세요."
             />
@@ -66,6 +99,7 @@ function LoginForm() {
           </div>
 
           <p
+            onClick={handleSubmit}
             className="w-full h-47 border rounded text-lg font-bold mt-20 transition-all focus:ring-2 focus:ring-primaryRed flex items-center justify-center cursor-pointer bg-black7 text-black1 border-black7 hover:bg-primaryRed hover:text-white dark:bg-black3 dark:text-black7 dark:border-black3 dark:hover:bg-primaryRed">
             로그인
           </p>

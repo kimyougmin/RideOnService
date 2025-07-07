@@ -64,12 +64,16 @@ function SignupForm({statusToLoginHandler}:SignupFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (signupFormDate.email.length <= 6 && signupFormDate.password.length < 8 && signupFormDate.birthDate.length < 8 && signupFormDate.phone.length === 13) {
+      alert("조건을 확인해주세요!");
+      return;
+    }
 
     const res = await SignupApi(signupFormDate);
     if (res.res === "회원가입 성공") {
       statusToLoginHandler();
     }
-  }
+  };
 
   return (
     <div>
