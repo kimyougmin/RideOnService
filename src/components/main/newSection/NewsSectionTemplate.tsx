@@ -1,4 +1,4 @@
-import {NewsType} from "@/types/newsType";
+import {NewsType} from "@/types/NewsType";
 import SafeHtml from "@/utils/SafeHtml";
 import GetTimeAgo from "@/utils/GetTimeAgo";
 import Link from 'next/link'

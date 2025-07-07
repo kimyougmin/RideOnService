@@ -1,4 +1,4 @@
-import { HTTPMethod, HTTPHeaders, HTTPParams } from '@/types/api';
+import { HTTPMethod, HTTPHeaders, HTTPParams } from '@/types/Api';
 import { API } from '@/utils/API';
 // TODO: 실제 API URL로 변경 필요
 const BASE_URL = process.env.NEXT_PUBLIC_LOCAL_SERVER_URL;

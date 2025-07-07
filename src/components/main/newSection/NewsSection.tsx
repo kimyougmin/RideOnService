@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { NewsType } from "@/types/newsType";
+import { NewsType } from "@/types/NewsType";
 import { APIBuilder } from "@/utils/APIBuilder";
 import NewsSectionTemplate from "@/components/main/newSection/NewsSectionTemplate";
 
