@@ -1,4 +1,4 @@
-import {NewsType} from "@/types/newsType";
+import {NewsType} from "@/types/NewsType";
 import {APIBuilder} from "@/utils/APIBuilder";
 
 interface GetNewsRequestType {
