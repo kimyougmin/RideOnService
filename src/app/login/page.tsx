@@ -5,6 +5,10 @@ import SignupForm from "@/components/login/SignupForm";
 
 export default function LoginPage() {
   const [isStatus, setIsStatus] = React.useState<boolean>(true);
+
+  const statusToLoginHandler = () => {
+    setIsStatus(true);
+  }
   return (
     <div className="w-full block h-full dark:bg-black10">
       <main className="max-w-[1440px] px-4 md:px-10 mx-auto pt-10 flex flex-col items-center gap-8 lg:mb-246 xl:mb-120 md:mb-60">
@@ -28,7 +32,7 @@ export default function LoginPage() {
           <p className={`w-164 h-40 font-bold rounded-r-lg flex items-center justify-center cursor-pointer border transition-all ${!isStatus ? `bg-black9 text-black1 border-black9 dark:bg-black1 dark:text-black9 dark:border-black1`: `bg-black1 text-black9 border-black9 dark:bg-black9 dark:text-black1 dark:border-black1`}`} onClick={() => setIsStatus(false)}>회원가입</p>
         </div>
 
-        {isStatus ? (<LoginForm/>) : (<SignupForm/>)}
+        {isStatus ? (<LoginForm/>) : (<SignupForm statusToLoginHandler={statusToLoginHandler}/>)}
 
       </main>
     </div>)

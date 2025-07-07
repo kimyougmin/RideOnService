@@ -5,7 +5,7 @@ import {
   ApiResponse,
   ApiError,
   ApiErrorResponse,
-} from '@/types/api';
+} from '@/types/Api';
 
 // RequestInit 타입 확장
 interface ExtendedRequestInit extends RequestInit {

@@ -1,4 +1,4 @@
-import { HTTPHeaders } from '@/types/api';
+import { HTTPHeaders } from '@/types/Api';
 import { APIBuilder } from './APIBuilder';
 
 // 기존 apiInstance와 호환성을 위한 래퍼 함수들
