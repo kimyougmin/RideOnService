@@ -1,10 +1,39 @@
-"use client"
-import React from 'react';
+'use client';
+import React, {useEffect, useState} from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import LoginForm from "@/components/login/LoginForm";
 import SignupForm from "@/components/login/SignupForm";
+import AlertComponent from "@/components/alert/AlertComponent";
 
 export default function LoginPage() {
   const [isStatus, setIsStatus] = React.useState<boolean>(true);
+  const [alert, setAlert] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const showAlert = (type: 'success' | 'error', message: string) => {
+    setAlert({ type, message });
+    setTimeout(() => setAlert(null), 3000); // ⏱️ 3초 후 자동 해제
+  };
+
+  // URL 파라미터에서 사용자 정보 확인
+  useEffect(() => {
+    const userParam = searchParams.get('user');
+
+    if (userParam) {
+      try {
+        // URL 디코딩 및 JSON 파싱
+        const decodedUserParam = decodeURIComponent(userParam);
+        console.log(decodedUserParam);
+        // 메인 페이지로 리다이렉트
+        // router.push('/');
+        showAlert('success', '소셜 로그인에 성공했습니다!');
+      } catch (error) {
+        showAlert('error', '소셜 로그인에 실패했습니다!');
+        console.error('소셜 로그인 데이터 처리 중 오류:', error);
+      }
+    }
+  }, [searchParams, router]);
 
   const statusToLoginHandler = () => {
     setIsStatus(true);
@@ -31,9 +60,8 @@ export default function LoginPage() {
           <p className={`w-164 h-40 font-bold rounded-l-lg flex items-center justify-center cursor-pointer border transition-all ${isStatus ? `bg-black9 text-black1 border-black9 dark:bg-black1 dark:text-black7 dark:border-black1`: `bg-black1 text-black9 border-black9 dark:bg-black9 dark:text-black1 dark:border-black1`}` } onClick={() => setIsStatus(true)}>로그인</p>
           <p className={`w-164 h-40 font-bold rounded-r-lg flex items-center justify-center cursor-pointer border transition-all ${!isStatus ? `bg-black9 text-black1 border-black9 dark:bg-black1 dark:text-black9 dark:border-black1`: `bg-black1 text-black9 border-black9 dark:bg-black9 dark:text-black1 dark:border-black1`}`} onClick={() => setIsStatus(false)}>회원가입</p>
         </div>
-
-        {isStatus ? (<LoginForm/>) : (<SignupForm statusToLoginHandler={statusToLoginHandler}/>)}
-
+        {isStatus ? (<LoginForm showAlert={showAlert}/>) : (<SignupForm showAlert={showAlert} statusToLoginHandler={statusToLoginHandler}/>)}
+        {alert && <AlertComponent type={alert.type} message={alert.message}/>}
       </main>
     </div>)
 }
