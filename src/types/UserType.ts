@@ -5,3 +5,8 @@ export interface UserType {
   profileImage: string | undefined;
   phone: string;
 }
+
+export interface UserStoreType extends UserType {
+  setUser: (user: UserType) => void;
+  clearUser: () => void;
+}

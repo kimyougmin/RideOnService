@@ -4,29 +4,40 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import LoginForm from "@/components/login/LoginForm";
 import SignupForm from "@/components/login/SignupForm";
 import AlertComponent from "@/components/alert/AlertComponent";
+import {userStore} from "@/store/userStore";
+import {UserType} from "@/types/UserType";
 
 export default function LoginPage() {
   const [isStatus, setIsStatus] = React.useState<boolean>(true);
   const [alert, setAlert] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
+  const setUser = userStore((state) => state.setUser);
 
   const showAlert = (type: 'success' | 'error', message: string) => {
     setAlert({ type, message });
-    setTimeout(() => setAlert(null), 3000); // ⏱️ 3초 후 자동 해제
+    setTimeout(() => setAlert(null), 3000);
   };
 
   // URL 파라미터에서 사용자 정보 확인
   useEffect(() => {
     const userParam = searchParams.get('user');
-
-    if (userParam) {
+    const userToken = searchParams.get('token');
+    if (userParam && userToken) {
       try {
         // URL 디코딩 및 JSON 파싱
-        const decodedUserParam = decodeURIComponent(userParam);
-        console.log(decodedUserParam);
-        // 메인 페이지로 리다이렉트
-        // router.push('/');
+        const param = JSON.parse(decodeURIComponent(userParam));
+        const userDate: UserType = {
+          email: param.email,
+          phone: param.phone,
+          token: userToken,
+          profileImage: param.profileImage,
+          name: param.name
+        }
+        if (param.email && param.phone && param.profileImage && param.id && param.name) {
+          setUser(userDate)
+        }
+        router.push('/');
         showAlert('success', '소셜 로그인에 성공했습니다!');
       } catch (error) {
         showAlert('error', '소셜 로그인에 실패했습니다!');

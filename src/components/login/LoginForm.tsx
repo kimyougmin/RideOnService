@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {LoginRequestType} from "@/types/LoginRequestType";
 import LoginApi from "@/apis/LoginApi";
+import {userStore} from "@/store/userStore";
 
 interface LoginFormProps {
   showAlert: (type: 'success' | 'error', message: string) => void;
@@ -13,6 +14,7 @@ function LoginForm({showAlert}: LoginFormProps) {
     email: "",
     password: ""
   });
+  const setUser = userStore((state) => state.setUser);
 
   const formDateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {value, name} = e.target;
@@ -31,8 +33,8 @@ function LoginForm({showAlert}: LoginFormProps) {
     const res = await LoginApi(userForm);
 
     if(res.token) {
+      setUser(res);
       showAlert('success', '로그인에 성공했습니다!');
-      // TODO: 전역 provider 설정
       return;
     }
     showAlert('error', '로그인에 실패했습니다!');
