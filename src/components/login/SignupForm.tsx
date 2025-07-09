@@ -13,12 +13,11 @@ import {ValiDateForm} from "@/utils/ValiDateForm";
 import {SignupRequestType} from "@/types/SignupRequestType";
 import SignupApi from "@/apis/SignupApi";
 
-
 interface SignupFormProps {
-  statusToLoginHandler: () => void
+  statusToLoginHandler: () => void;
+  showAlert: (type: 'success' | 'error', message: string) => void;
 }
-
-function SignupForm({statusToLoginHandler}:SignupFormProps) {
+function SignupForm({statusToLoginHandler, showAlert}:SignupFormProps) {
   const [signupFormDate, setSignupFormDate] = React.useState<SignupRequestType>({
     email: "",
     password: "",
@@ -71,8 +70,11 @@ function SignupForm({statusToLoginHandler}:SignupFormProps) {
 
     const res = await SignupApi(signupFormDate);
     if (res.res === "회원가입 성공") {
+      showAlert('success', '회원가입에 성공했습니다!');
       statusToLoginHandler();
+      return;
     }
+    showAlert('error', '회원가입에 실패했습니다!');
   };
 
   return (

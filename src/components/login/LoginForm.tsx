@@ -1,14 +1,20 @@
+"use client";
 import React from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import {LoginRequestType} from "@/types/LoginRequestType";
 import LoginApi from "@/apis/LoginApi";
+import {userStore} from "@/store/userStore";
 
-function LoginForm() {
+interface LoginFormProps {
+  showAlert: (type: 'success' | 'error', message: string) => void;
+}
+function LoginForm({showAlert}: LoginFormProps) {
   const [userForm, setUserForm] = React.useState<LoginRequestType>({
     email: "",
     password: ""
-  })
+  });
+  const setUser = userStore((state) => state.setUser);
 
   const formDateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {value, name} = e.target;
@@ -21,15 +27,19 @@ function LoginForm() {
     e.preventDefault()
     if (userForm.email.length <= 6 && userForm.password.length <= 6) {
       alert("조건을 확인해주세요!");
-      return
+      return;
     }
 
     const res = await LoginApi(userForm);
 
     if(res.token) {
-      // TODO: 전역 provider 설정 
+      setUser(res);
+      showAlert('success', '로그인에 성공했습니다!');
+      return;
     }
+    showAlert('error', '로그인에 실패했습니다!');
   };
+
   return (
     <div className="flex justify-center w-full px-4 sm:px-0 mt-40 pb-52">
       <form className="w-full max-w-md flex flex-col items-center" onSubmit={handleSubmit}>
@@ -82,6 +92,7 @@ function LoginForm() {
             </div>
 
             <button type="button"
+                    onClick={() => window.location.href = 'http://localhost:8080/oauth2/authorization/kakao'}
                     className="w-full h-47 bg-[#FEE500] rounded flex items-center justify-center font-bold text-lg">
               <div className="flex items-center justify-center gap-3">
                 <Image src="/icons/kakaoLogin.svg" alt="카카오 로그인" width={20} height={20}/>
