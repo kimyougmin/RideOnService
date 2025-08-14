@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/atoms/select"
 import useDateOptions from "@/hooks/useDateOptions";
 import {ValiDateForm} from "@/utils/ValiDateForm";
 import {SignupRequestType} from "@/types/SignupRequestType";
@@ -78,9 +78,9 @@ function SignupForm({statusToLoginHandler, showAlert}:SignupFormProps) {
   };
 
   return (
-    <div>
+    <div className="sm:w-[434px] w-full  px-4">
       <form className="w-full flex flex-col items-center mt-48" onSubmit={handleSubmit}>
-        <div className="w-[428px] space-y-[32px]">
+        <div className="w-full space-y-[32px]">
           <div>
             <label className="block text-sm font-medium mb-1 text-black7 dark:text-black1">이메일</label>
             <input
@@ -204,7 +204,7 @@ function SignupForm({statusToLoginHandler, showAlert}:SignupFormProps) {
           className="w-[428px] h-[47px] border rounded text-lg font-bold mt-[26px] transition-all focus:ring-2 focus:ring-primaryRed flex items-center justify-center cursor-pointer dark:bg-black1 dark:text-black7">
           회원가입
         </button>
-        <p className="mt-27 text-sm dark:text-black3 text-center">
+        <p className="my-27 text-sm dark:text-black3 text-center">
           Wherever you want, <span className="text-primaryRed font-bold">RideOn</span>
           <Link href="/" className="underline ml-4 dark:text-blue-400 text-blue-600">홈으로 돌아가기</Link>
         </p>

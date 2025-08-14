@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import LoginForm from "@/components/login/LoginForm";
 import SignupForm from "@/components/login/SignupForm";
-import AlertComponent from "@/components/alert/AlertComponent";
+import AlertComponent from "@/components/atoms/AlertComponent";
 import {userStore} from "@/store/userStore";
 import {UserType} from "@/types/UserType";
 

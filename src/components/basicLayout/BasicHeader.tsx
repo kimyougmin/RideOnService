@@ -77,7 +77,7 @@ export default function Header() {
           </svg>
 
           {/* User Icon */}
-          <Link href="/mypage">
+          <Link href="/login">
             <svg
               width="25"
               height="26"
