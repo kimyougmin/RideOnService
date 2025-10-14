@@ -64,7 +64,7 @@ export class APIBuilder {
 // 예시 사용법
 /*
   // API 요청 예시
-  const response = await APIBuilder.post('/auth/login', { username: 'user', password: 'pass' })
+  const response = await APIBuilder.qna('/auth/login', { username: 'user', password: 'pass' })
     .baseURL('https://api.example.com')
     .headers({ 'X-API-Key': 'your-api-key' })
     .timeout(10000)

@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import {UserStoreType, UserType} from '@/types/UserType';
+import {APIBuilder} from "@/utils/APIBuilder";
+import {RefreshTokenType} from "@/types/RefreshTokenType";
 
 export const userStore = create<UserStoreType>()(
   persist(
@@ -14,6 +16,14 @@ export const userStore = create<UserStoreType>()(
         set(() => ({
           ...user,
         })),
+      refreshToken: async () => {
+        const response = await APIBuilder.post('/auth/refresh', {})
+          .withCredentials(true)
+          .timeout(2000)
+          .build()
+          .call<RefreshTokenType>();
+        set({ token: response.data.token});
+      },
       clearUser: () =>
         set(() => ({
           token: '',

@@ -95,7 +95,7 @@ function LoginForm({showAlert}: LoginFormProps) {
             </div>
 
             <button type="button"
-                    onClick={() => window.location.href = 'http://localhost:8080/oauth2/authorization/kakao'}
+                    onClick={() => window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/oauth2/authorization/kakao`}
                     className="w-full h-47 bg-[#FEE500] rounded flex items-center justify-center font-bold text-lg">
               <div className="flex items-center justify-center gap-3">
                 <Image src="/icons/kakaoLogin.svg" alt="카카오 로그인" width={20} height={20}/>
