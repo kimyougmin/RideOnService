@@ -2,14 +2,12 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import MemberProfileImage from "@/components/atoms/MemberProfileImage";
 import {userStore} from "@/store/userStore";
-import Image from "next/image";
-// import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const {profileImage, name} = userStore();
-  // const pathname = usePathname();
+  const { profileImage} = userStore();
 
   useEffect(() => {
     const theme = localStorage.getItem('theme');
@@ -78,12 +76,7 @@ export default function Header() {
               fill={isDarkMode ? 'white' : 'black'}
             />
           </svg>
-
-          {/* User Icon */}
-          {profileImage && <div className="rounded-full overflow-hidden">
-              <Image src={profileImage} alt={`profileImage`} width={25} height={26}/>
-          </div>}
-          {!profileImage && <Link href="/login">
+          {profileImage ? <MemberProfileImage path={"/mypage"} width={25} height={26}/>: <Link href="/login">
               <svg
                   width="25"
                   height="26"
