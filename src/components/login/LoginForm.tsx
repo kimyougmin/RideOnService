@@ -5,6 +5,7 @@ import Image from "next/image";
 import {LoginRequestType} from "@/types/LoginRequestType";
 import LoginApi from "@/apis/LoginApi";
 import {userStore} from "@/store/userStore";
+import {useRouter} from "next/navigation";
 
 interface LoginFormProps {
   showAlert: (type: 'success' | 'error', message: string) => void;
@@ -14,6 +15,7 @@ function LoginForm({showAlert}: LoginFormProps) {
     email: "",
     password: ""
   });
+  const router = useRouter();
   const setUser = userStore((state) => state.setUser);
 
   const formDateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +36,7 @@ function LoginForm({showAlert}: LoginFormProps) {
 
     if(res.token) {
       setUser(res);
+      router.push('/');
       showAlert('success', '로그인에 성공했습니다!');
       return;
     }
@@ -92,7 +95,7 @@ function LoginForm({showAlert}: LoginFormProps) {
             </div>
 
             <button type="button"
-                    onClick={() => window.location.href = 'http://localhost:8080/oauth2/authorization/kakao'}
+                    onClick={() => window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/oauth2/authorization/kakao`}
                     className="w-full h-47 bg-[#FEE500] rounded flex items-center justify-center font-bold text-lg">
               <div className="flex items-center justify-center gap-3">
                 <Image src="/icons/kakaoLogin.svg" alt="카카오 로그인" width={20} height={20}/>

@@ -62,10 +62,10 @@ function NewsSectionTemplate({latest, popular}: NewsSectionProps) {
                       </svg>
                       <SafeHtml html={item.title} style={"text-20 truncate text-black10 mb-2 dark:text-black1"}/>
                     </h4>
-                    <p className="text-body1 text-gray-600 dark:text-gray-400 truncate m-0 mt-1 ml-22">
+                    <div className="text-body1 text-gray-600 dark:text-gray-400 truncate m-0 mt-1 ml-22">
                       <SafeHtml html={item.description}
                                 style={"text-body1 truncate text-gray-600 text-[15px] dark:text-gray-400"}/>
-                    </p>
+                    </div>
                     <p
                       className="text-body2 text-6 text-gray-500 text-[13px] mt-8 ml-22">{GetTimeAgo(item.pubDate)}</p>
                   </Link>
@@ -152,10 +152,10 @@ function NewsSectionTemplate({latest, popular}: NewsSectionProps) {
                       </svg>
                       <SafeHtml html={item.title} style={"text-20 text-black10 truncate mb-2 dark:text-black1"}/>
                     </h4>
-                    <p className="text-body1 text-gray-600 dark:text-gray-400 truncate m-0 mt-1 ml-22">
+                    <div className="text-body1 text-gray-600 dark:text-gray-400 truncate m-0 mt-1 ml-22">
                       <SafeHtml html={item.description}
                                 style={"text-body1 truncate text-gray-600 text-[15px] dark:text-gray-400"}/>
-                    </p>
+                    </div>
                     <div
                       className="text-body2 text-6 text-gray-500 text-[13px] mt-8 ml-22">{GetTimeAgo(item.pubDate)}</div>
                   </Link>

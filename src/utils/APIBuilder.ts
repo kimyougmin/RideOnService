@@ -1,7 +1,7 @@
 import { HTTPMethod, HTTPHeaders, HTTPParams } from '@/types/Api';
 import { API } from '@/utils/API';
 // TODO: 실제 API URL로 변경 필요
-const BASE_URL = process.env.NEXT_PUBLIC_LOCAL_SERVER_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 // API 빌더 클래스 정의
 export class APIBuilder {
@@ -64,7 +64,7 @@ export class APIBuilder {
 // 예시 사용법
 /*
   // API 요청 예시
-  const response = await APIBuilder.post('/auth/login', { username: 'user', password: 'pass' })
+  const response = await APIBuilder.qna('/auth/login', { username: 'user', password: 'pass' })
     .baseURL('https://api.example.com')
     .headers({ 'X-API-Key': 'your-api-key' })
     .timeout(10000)
