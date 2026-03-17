@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import MemberProfileImage from "@/components/atoms/MemberProfileImage";
+import MyLoginBtn from "@/components/atoms/MyLoginBtn";
 import {userStore} from "@/store/userStore";
 
 function Page() {
@@ -10,7 +10,7 @@ function Page() {
     <div>
       <section>
         <div>
-          <MemberProfileImage path={"/mypage"} width={120} height={120}/>
+          <MyLoginBtn path={"/mypage"} width={120} height={120}/>
           <span>{name}</span>
         </div>
         <div>
